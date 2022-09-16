@@ -1,0 +1,80 @@
+﻿@model EMovies.Models.Movie
+
+@{
+    ViewData["Title"] = "Movie Details";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <div class="card mb-12">
+            <div class="row g-0">
+                <div class="col-md-12">
+                    <div class="card-header text-white bg-info">
+                        <p class="card-text">
+                            <h5 class="card-title">
+                                @Model.MovieName
+                            </h5>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <img src="@Model.MovieImageURL" width="100%" height="100%" alt="@Model.MovieName">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <p class="card-text">@Model.MovieDescription</p>
+                          <p class="card-text">
+                            <b>Director: 
+                            <a asp-controller="Directors" asp-action="Details" style="text-decoration:none;" asp-route-id="@Model.DirectorId">
+                                @Model.Director.DirectorName
+                            </a>
+                            </b>
+                        </p>
+                        <p class="card-text"><b>Release Date: </b>@Model.ReleaseDate.ToString("dd MMM yy")</p>
+                        <p class="card-text ">
+                            <b>Status: </b>
+                                @if (DateTime.Now >= @Model.ReleaseDate )
+                                {
+                                    <span class="badge bg-success text-white">AVAILABLE</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-primary text-white">UPCOMING</span>
+                                }
+                        </p>
+                        <p class="card-text">
+                            <b>Actors: </b>
+                            <hr />
+                            <div class="row">
+                                @foreach (var actor in Model.Actors_Movies)
+                                {
+                                    <div class="col-4 text-center">
+
+                                        <img class="border-info rounded-circle" src="@actor.Actor.ProfilePictureUrl" style="width: 150px; height:100px" />
+                                        <br />
+                                        <b>
+                                        <a asp-controller="Actors" class="text text-primary" style="text-decoration:none" asp-action="Details" asp-route-id="@actor.ActorId">@actor.Actor.ActorName</a>
+                                            </b>
+                                    </div>
+                                }
+                            </div>
+                        </p>
+
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="card-footer">
+                        <p class="card-text">
+                            <a class="btn btn-outline-primary float-right" asp-action="Index">
+                                View All Movies
+                            </a>
+                            <a class="btn btn-success text-white  @((DateTime.Now <@Model.ReleaseDate) ? "disabled" : "")" 
+                               asp-controller="Orders" 
+                               asp-action="AddItemToShoppingCart" asp-route-id="@Model.MovieId"><i class="bi bi-cart-plus"></i> Add to Cart (Price @Model.MoviePrice.ToString("c"))</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

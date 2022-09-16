@@ -1,0 +1,35 @@
+﻿@model EMovies.Models.Director
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<div>
+    <h1>Director Details</h1>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ProfilePictureUrl)
+        </dt>
+        <dd class = "col-sm-10">
+          <img src=@Model.ProfilePictureUrl  alt=@Model.DirectorName class="rounded-circle" style="max-width:150px;">
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DirectorName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DirectorName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Biography)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Biography)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" class="btn btn-dark" asp-route-id="@Model?.DirectorId">Edit Director</a> |
+    <a asp-action="Index" class="btn btn-outline-secondary">Display All Directors</a>
+</div>

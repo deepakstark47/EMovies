@@ -1,0 +1,61 @@
+﻿@model EMovies.Models.Director
+
+@{
+    ViewData["Title"] = "Create Director";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+<p>
+<h1>Add a New Director</h1>
+</p>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+             <div class="form-group text-center">
+               <img id="ProfilePicturePreview"  class="border-info rounded-circle" style="max-width: 150px" />
+               </div>
+           
+            <div class="form-group">
+                <label asp-for="ProfilePictureUrl" class="control-label"></label>
+                <input asp-for="ProfilePictureUrl" class="form-control" />
+                <span asp-validation-for="ProfilePictureUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DirectorName" class="control-label"></label>
+                <input asp-for="DirectorName" class="form-control" />
+                <span asp-validation-for="DirectorName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Biography" class="control-label"></label>
+                <input asp-for="Biography" class="form-control" />
+                <span asp-validation-for="Biography" class="text-danger"></span>
+            </div>
+  <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-outline-success float-end" />
+           <a class="btn btn-outline-secondary"  asp-action="Index">Show All Directors</a>
+            
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function () {
+            var output = document.getElementById('ProfilePicturePreview');
+            output.src = $("#ProfilePictureUrl").val();
+        })
+
+        $("#ProfilePictureUrl").on("change", function () {
+            var output = document.getElementById('ProfilePicturePreview');
+            output.src = $(this).val();
+        })
+
+ </script>
+}
