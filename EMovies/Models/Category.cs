@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations;
 
 namespace EMovies.Models
 {
@@ -10,6 +11,7 @@ namespace EMovies.Models
         public string CategoryName { get; set; }
 
         //relationships
+        [ValidateNever]
         public List<Movie> movies { get; set; }
 
     }
