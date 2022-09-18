@@ -8,12 +8,12 @@
 <div class="row text">
     <div class="col-md-8 offset-2">
 
-<h1>Edit Actor</h1>
+<h1 class="text-center">Edit Actor</h1>
 
 
 <hr />
 <div class="row">
-    <div class="col-md-4">
+            <div class="col-md-8 offset-2">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ActorId" />
@@ -36,10 +36,11 @@
                 <input asp-for="Biography" class="form-control" />
                 <span asp-validation-for="Biography" class="text-danger"></span>
             </div>
-          
+          <span style="padding:5px"></span>
         <div class="form-group">
-                <input type="submit" value="Update" class="btn btn-outline-success float-end" />
-           <a class="btn btn-outline-secondary"  asp-action="Index">Show All Actors</a>
+                <input type="submit" value="Edit" class="btn btn-primary float-end" />
+          <span style="padding:5px"></span>
+                <a class="btn btn-dark"  asp-action="Index">Show All Actors</a>
             
             </div>
         

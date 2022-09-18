@@ -3,11 +3,17 @@
 @{
     ViewData["Title"] = "List Of Movies";
 }
-<div class="text-white "> <a asp-controller="Movies" 
-            asp-action="Create" class="btn btn-success">
-<i class="bi bi-plus-circle"></i> Add New Movie </a>
-</div>
 
+
+ @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+
+    <div class="text-white "> <a asp-controller="Movies" 
+            asp-action="Create" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Add New Movie </a>
+    </div>
+    <span style="padding:5px"></span>
+}
 
 <div class="row">
     @foreach (var item in Model)
@@ -20,8 +26,11 @@
                             <p class="card-text">
                                 <h5 class="card-title">
                                     @item.MovieName
+                                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                    {
+
                     <a class="text-white float-right" asp-action="Edit" asp-route-id="@item.MovieId"><i class="bi bi-pencil-square"></i></a>
-                                   
+                                    }                                   
                                 </h5>
                             </p>
                         </div>

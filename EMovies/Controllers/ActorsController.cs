@@ -1,8 +1,10 @@
 ﻿using EMovies.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EMovies.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class ActorsController : Controller
     {
         private readonly MovieDbContext _context;
@@ -10,7 +12,8 @@ namespace EMovies.Controllers
         public ActorsController(MovieDbContext context)
         {
             _context = context;
-        } 
+        }
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var data = _context.Actors.ToList();
@@ -36,7 +39,7 @@ namespace EMovies.Controllers
             return View(a);
 
         }
-
+        [AllowAnonymous]
         public IActionResult Details(int id)
         {
             Actor actorDetails = _context.Actors.Find(id);

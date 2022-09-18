@@ -1,4 +1,5 @@
 ﻿using EMovies.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -6,6 +7,7 @@ using System.IO;
 
 namespace EMovies.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class MoviesController : Controller
     {
         private readonly MovieDbContext _context;
@@ -14,17 +16,22 @@ namespace EMovies.Controllers
         {
             _context = context;
         }
+
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var data = await _context.Movies.Include(m => m.Director).Include(m => m.Category).ToListAsync();
             return View(data);
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             var data = await _context.Movies.Include(m => m.Director).Include(m => m.Category).Include(m => m.Actors_Movies).ThenInclude(a => a.Actor).FirstOrDefaultAsync(n => n.MovieId == id);
             return View(data);
         }
+
+        [AllowAnonymous]
 
         public async Task<IActionResult> Filter(string searchString)
         {

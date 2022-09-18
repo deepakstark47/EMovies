@@ -1,11 +1,14 @@
 ﻿using EMovies.Cart;
 using EMovies.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Versioning;
 using System.Security.Claims;
 
 namespace EMovies.Controllers
 {
+    [Authorize]
     public class OrdersController : Controller
     {
         private readonly ShoppingCart _shoppingCart;
@@ -23,11 +26,15 @@ namespace EMovies.Controllers
         public async Task<IActionResult> Index()
         {
 
-            string userId = "";
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            string userRole = User.FindFirstValue(ClaimTypes.Role);
 
-            var orders = await _context.Orders.Include(n => n.OrderItems).ThenInclude(n => n.Movie).Where(n => n.UserId == userId).ToListAsync();
+            var orders = await _context.Orders.Include(n => n.OrderItems).ThenInclude(n => n.Movie).Include(n=>n.User).ToListAsync();
 
-            
+            if (userRole!="Admin")
+            {
+                orders = orders.Where(n => n.UserId == userId).ToList();
+            }
             return View(orders);
             
         }
@@ -74,11 +81,17 @@ namespace EMovies.Controllers
             return RedirectToAction(nameof(ShoppingCart));
         }
 
+
+
+ 
+
+
+
         public async Task<IActionResult> CompleteOrder()
         {
             var items = _shoppingCart.GetShoppingCartItems();
-            string userId = "";
-            string userEmailAddress = "";
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            string userEmailAddress = User.FindFirstValue(ClaimTypes.Email);
 
             var order = new Order()
             {

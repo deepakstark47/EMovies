@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace EMovies.Models
 {
-    public class MovieDbContext : DbContext
+    public class MovieDbContext : IdentityDbContext<ApplicationUser>
     {
         public MovieDbContext(DbContextOptions<MovieDbContext> options) : base(options)
         {

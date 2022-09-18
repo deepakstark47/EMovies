@@ -1,9 +1,11 @@
 ﻿using EMovies.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace EMovies.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class CategoriesController : Controller
     {
         private readonly MovieDbContext _context;
@@ -12,6 +14,7 @@ namespace EMovies.Controllers
         {
             _context = context;
         }
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var data = await _context.Categories.ToListAsync();

@@ -19,8 +19,16 @@ namespace EMovies.Models
         [ValidateNever]
         public Movie Movie { get; set; }
 
+        [ValidateNever]
+        public string UserId { get; set; }
 
-        
+
+        [ForeignKey(nameof(UserId))]
+        [ValidateNever]
+        public ApplicationUser User { get; set; }
+
+
+
 
     }
 }

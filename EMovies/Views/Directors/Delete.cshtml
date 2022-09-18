@@ -4,36 +4,47 @@
     ViewData["Title"] = "Delete Director";
 }
 
-<h1>Delete Director @Model.DirectorName</h1>
+<h1 class="text-center"">Delete Director </h1>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3 class="text-danger text-center">Are you sure you want to delete this?</h3>
 
-<div>
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ProfilePictureUrl)
-        </dt>
-        <dd class = "col-sm-10">
-            <img src=@Model.ProfilePictureUrl  alt=@Model.DirectorName class="rounded-circle" style="max-width:150px;">
-       
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DirectorName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DirectorName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Biography)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Biography)
-        </dd>
-    </dl>
-    
-     <form asp-action="Delete">
+<<div class="row">
+    <div class="col-md-8 offset-2">
+
+        <div class="row">
+            <div class="col-md-8 offset-2">
+
+                <h1 class="text-center">Director Details</h1>
+                <hr />
+
+
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src=@Model.ProfilePictureUrl alt=@Model.DirectorName" style="max-width:150px;">
+
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    @Html.DisplayFor(model => model.DirectorName)
+                                </h5>
+                                <p class="card-text">
+                                    @Html.DisplayFor(model => model.Biography)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+
+                    <form asp-action="Delete">
         <input type="hidden" asp-for="DirectorId" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
-      <a asp-action="Index" class="btn btn-outline-secondary">Display All Director</a>
+      <a asp-action="Index" class="btn btn-dark">Display All Director</a>
     </form>
+</div>
+</div>
+</div>
+</div>
 </div>

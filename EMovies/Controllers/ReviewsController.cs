@@ -1,10 +1,13 @@
 ﻿using EMovies.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace EMovies.Controllers
 {
+    [Authorize]
     public class ReviewsController : Controller
     {
         private readonly MovieDbContext _context;
@@ -13,15 +16,18 @@ namespace EMovies.Controllers
         {
             _context = context;
         }
+
+        [AllowAnonymous]
         public async Task<IActionResult> Index(int id)
         {
-            var data = await _context.Reviews.Include(r=>r.Movie).Where(r => r.MovieId == id).ToListAsync();
+            var data = await _context.Reviews.Include(r=>r.Movie).Include(r=>r.User).Where(r => r.MovieId == id).ToListAsync();
             return View(data);
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> AllReviews(int id)
         {
-            var data = await _context.Reviews.Include(r => r.Movie).ToListAsync();
+            var data = await _context.Reviews.Include(r => r.Movie).Include(r => r.User).ToListAsync();
             return View(data);
         }
 
@@ -29,13 +35,15 @@ namespace EMovies.Controllers
         {
             var result = _context.Movies.ToList();
             ViewBag.MovieName = new SelectList(result, "MovieId", "MovieName");
-
+            
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(Review r)
         {
+            r.UserId=User.FindFirstValue(ClaimTypes.NameIdentifier);
+
             if (ModelState.IsValid)
             {
                 _context.Reviews.Add(r);
@@ -59,6 +67,8 @@ namespace EMovies.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(Review r)
         {
+            r.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
             if (!ModelState.IsValid)
             {
                 return View(r);

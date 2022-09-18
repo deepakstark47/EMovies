@@ -1,4 +1,6 @@
-﻿namespace EMovies.Models
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace EMovies.Models
 {
     public class MovieDbInitializer
     {
@@ -18,38 +20,38 @@
                     {
                         new Actor()
                         {
-                            ActorName = "Actor 1",
-                            Biography = "This is the Bio of the first actor",
+                            ActorName = "Ken Adams",
+                            Biography = "Masterful Actor",
                             ProfilePictureUrl = "http://dotnethow.net/images/actors/actor-1.jpeg"
 
                         },
                         new Actor()
                         {
-                            ActorName = "Actor 2",
-                            Biography = "This is the Bio of the second actor",
-                             ProfilePictureUrl = "http://dotnethow.net/images/actors/actor-1.jpeg"
+                            ActorName = "JK Simmons",
+                            Biography = "A Savage when it comes to cult classic roles",
+                             ProfilePictureUrl = "http://dotnethow.net/images/actors/actor-2.jpeg"
 
                         },
                         new Actor()
                         {
-                        ActorName = "Actor 3",
-                        Biography = "This is the Bio of the third actor",
-                        ProfilePictureUrl = "http://dotnethow.net/images/actors/actor-1.jpeg"
+                        ActorName = "Keith Lee",
+                        Biography = "Great Performer.. Fanatastic actor of many awards",
+                        ProfilePictureUrl = "http://dotnethow.net/images/actors/actor-3.jpeg"
 
 
                         },
                         new Actor()
                         {
-                        ActorName = "Actor 4",
-                        Biography = "This is the Bio of the fourth actor",
-                        ProfilePictureUrl = "http://dotnethow.net/images/actors/actor-1.jpeg"
+                        ActorName = "Stan Lee",
+                        Biography = "Actor Mainly seen in powerful cameo roles",
+                        ProfilePictureUrl = "http://dotnethow.net/images/actors/actor-4.jpeg"
 
                         },
                         new Actor()
                         {
-                        ActorName = "Actor 5",
-                        Biography = "This is the Bio of the fifth actor",
-                        ProfilePictureUrl = "http://dotnethow.net/images/actors/actor-1.jpeg"
+                        ActorName = "Edward Norton",
+                        Biography = "Acted in the incredible hulk",
+                        ProfilePictureUrl = "http://dotnethow.net/images/actors/actor-5.jpeg"
 
                         }
                     });
@@ -62,35 +64,35 @@
                     {
                         new Director()
                         {
-                            DirectorName = "Director 1",
-                            Biography = "This is the Bio of the first director",
+                            DirectorName = "Steven Spielberg",
+                            Biography = "He has an extraordinary number of commercially successful and critically acclaimed credits to his name",
                             ProfilePictureUrl = "http://dotnethow.net/images/producers/producer-1.jpeg"
 
                         },
                         new Director()
                         {
-                            DirectorName = "Director 2",
-                            Biography = "This is the Bio of the second director",
-                            ProfilePictureUrl = "http://dotnethow.net/images/producers/producer-1.jpeg"
+                            DirectorName = "Joe Russo",
+                            Biography = "He is one among the actors who directed the world's higgest grossing film",
+                            ProfilePictureUrl = "http://dotnethow.net/images/producers/producer-2.jpeg"
 
                         },
                         new Director()
                         {
-                            DirectorName = "Director 3",
-                            Biography = "This is the Bio of the third director",
-                            ProfilePictureUrl = "http://dotnethow.net/images/producers/producer-1.jpeg"
+                            DirectorName = "Jon Watts",
+                            Biography = "Director of marvel spiderman triology",
+                            ProfilePictureUrl = "http://dotnethow.net/images/producers/producer-3.jpeg"
                         },
                         new Director()
                         {
-                            DirectorName = "Director 4",
-                            Biography = "This is the Bio of the fourth director",
-                            ProfilePictureUrl = "http://dotnethow.net/images/producers/producer-1.jpeg"
+                            DirectorName = "Sam Raimi",
+                            Biography = "Director of old spiderman triology",
+                            ProfilePictureUrl = "http://dotnethow.net/images/producers/producer-4.jpeg"
                         },
                         new Director()
                         {
-                            DirectorName = "Director ",
-                            Biography = "This is the Bio of the fifth director",
-                            ProfilePictureUrl = "http://dotnethow.net/images/producers/producer-1.jpeg"
+                            DirectorName = "Matt Reeves",
+                            Biography = "Director of Batman.. Critically acclaimed film",
+                            ProfilePictureUrl = "http://dotnethow.net/images/producers/producer-5.jpeg"
                         }
                     });
                     context.SaveChanges();
@@ -131,7 +133,7 @@
                         new Movie()
                         {
                             MovieName = "Life",
-                            MovieDescription = "This is the Life movie description",
+                            MovieDescription = "This is a action movie filled with suspense",
                             MoviePrice = 39.50,
                             MovieImageURL = "http://dotnethow.net/images/movies/movie-3.jpeg",
                             ReleaseDate = DateTime.Now.AddDays(10),
@@ -141,7 +143,7 @@
                         new Movie()
                         {
                             MovieName = "The Shawshank Redemption",
-                            MovieDescription = "This is the Shawshank Redemption description",
+                            MovieDescription = "This is no.1 rated movie in IMDB",
                             MoviePrice = 29.50,
                             MovieImageURL = "http://dotnethow.net/images/movies/movie-1.jpeg",
                             ReleaseDate = DateTime.Now.AddDays(3),
@@ -151,7 +153,7 @@
                         new Movie()
                         {
                             MovieName = "Ghost",
-                            MovieDescription = "This is the Ghost movie description",
+                            MovieDescription = "One of the most thrilling horror films",
                             MoviePrice = 39.50,
                             MovieImageURL = "http://dotnethow.net/images/movies/movie-4.jpeg",
                             ReleaseDate = DateTime.Now.AddDays(7),
@@ -161,7 +163,7 @@
                         new Movie()
                         {
                             MovieName = "Race",
-                            MovieDescription = "This is the Race movie description",
+                            MovieDescription = "Race is about time travel and thrill",
                             MoviePrice = 39.50,
                             MovieImageURL = "http://dotnethow.net/images/movies/movie-6.jpeg",
                             ReleaseDate = DateTime.Now.AddDays(-5),
@@ -171,7 +173,7 @@
                         new Movie()
                         {
                             MovieName = "Scoob",
-                            MovieDescription = "This is the Scoob movie description",
+                            MovieDescription = "Animation movie of cooby doo and his friends.",
                             MoviePrice = 39.50,
                             MovieImageURL = "http://dotnethow.net/images/movies/movie-7.jpeg",
                             ReleaseDate = DateTime.Now.AddDays(-2),
@@ -290,43 +292,49 @@
                     {
                         new Review()
                         {
-                            ReviewDescription ="This is review for movie 1",
+                            ReviewDescription ="Nice!! Well Done...",
 
                             StarRating=4,
 
-                            MovieId=1
+                            MovieId=1,
+
+                            UserId="4b25bace-d1f7-44d0-bd7b-7af5a474bfde"
 
     },
                         new Review()
-                        {   ReviewDescription ="This is review for movie 2",
+                        {   ReviewDescription ="Excellent!! Screenplay and acting....",
 
                             StarRating=5,
-                            MovieId=2
+                            MovieId=2,
+                            UserId="4b25bace-d1f7-44d0-bd7b-7af5a474bfde"
                         },
                         new Review()
                         {
-                            ReviewDescription ="This is review for movie 3",
+                            ReviewDescription ="Visual Treat of a film...!!",
 
                             StarRating=4,
 
-                            MovieId=3
+                            MovieId=3,
+                            UserId="4b25bace-d1f7-44d0-bd7b-7af5a474bfde"
 
                         },
                         new Review()
                         {
-                            ReviewDescription ="This is review for movie 4",
+                            ReviewDescription ="Amazing visual and great direction",
 
                             StarRating=5,
 
-                            MovieId=4
+                            MovieId=4,
+                            UserId="4b25bace-d1f7-44d0-bd7b-7af5a474bfde"
                         },
                         new Review()
                         {
-                            ReviewDescription ="This is review for movie 5",
+                            ReviewDescription ="Similar movie to the previous part!!Not much new",
 
-                            StarRating=5,
+                            StarRating=3,
 
-                            MovieId=5
+                            MovieId=5,
+                            UserId="4b25bace-d1f7-44d0-bd7b-7af5a474bfde"
 
                         },
                     });
@@ -336,5 +344,58 @@
             }
 
         }
+
+
+        public static async Task SeedUsersAndRolesAsync(IApplicationBuilder applicationBuilder)
+        {
+            using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
+            {
+
+                //Roles
+                var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+                if (!await roleManager.RoleExistsAsync("Admin"))
+                    await roleManager.CreateAsync(new IdentityRole("Admin"));
+                if (!await roleManager.RoleExistsAsync("User"))
+                    await roleManager.CreateAsync(new IdentityRole("User"));
+
+                //Users
+                var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+                string adminUserEmail = "admin@gmail.com";
+
+                var adminUser = await userManager.FindByEmailAsync(adminUserEmail);
+                if (adminUser == null)
+                {
+                    var newAdminUser = new ApplicationUser()
+                    {
+                        FullName = "Admin User",
+                        UserName = "admin-user",
+                        Email = adminUserEmail,
+                        EmailConfirmed = true
+                    };
+                    await userManager.CreateAsync(newAdminUser, "Coding@1234?");
+                    await userManager.AddToRoleAsync(newAdminUser, "Admin");
+                }
+
+
+                string appUserEmail = "user@gmail.com";
+
+                var appUser = await userManager.FindByEmailAsync(appUserEmail);
+                if (appUser == null)
+                {
+                    var newAppUser = new ApplicationUser()
+                    {
+                        FullName = "Application User",
+                        UserName = "app-user",
+                        Email = appUserEmail,
+                        EmailConfirmed = true
+                    };
+                    await userManager.CreateAsync(newAppUser, "Coding@1234?");
+                    await userManager.AddToRoleAsync(newAppUser, "User");
+                }
+            }
+
+        }
+
     }
 }
