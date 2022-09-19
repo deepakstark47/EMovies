@@ -286,7 +286,7 @@ namespace EMovies.Models
                 }
 
                 //Review
-                if (!context.Reviews.Any())
+                /*if (!context.Reviews.Any())
                 {
                     context.Reviews.AddRange(new List<Review>()
                     {
@@ -339,7 +339,7 @@ namespace EMovies.Models
                         },
                     });
                     context.SaveChanges();
-                }
+                }*/
 
             }
 
